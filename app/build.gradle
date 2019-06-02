@@ -17,6 +17,10 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            resValue("string", "the_movie_db_api_key", "$System.env.THE_MOVIE_DB_KEY")
+        }
+        debug {
+            resValue("string", "the_movie_db_api_key", "$System.env.THE_MOVIE_DB_KEY")
         }
     }
     compileOptions {
