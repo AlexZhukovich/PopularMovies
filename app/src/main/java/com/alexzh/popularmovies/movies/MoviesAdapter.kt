@@ -1,11 +1,13 @@
 package com.alexzh.popularmovies.movies
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.alexzh.popularmovies.R
 import com.alexzh.popularmovies.data.model.Movie
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_movie.view.*
 
 class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
@@ -33,6 +35,11 @@ class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
     ) : RecyclerView.ViewHolder(view) {
 
         fun bind(movie: Movie) {
+            Log.d("MovieViewHolder", "Poster url: " + "http://image.tmdb.org/t/p/w185/${movie.backdropPath}")
+
+            Glide.with(itemView.context)
+                .load("https://image.tmdb.org/t/p/w185${movie.posterPath}")
+                .into(itemView.movieLogo)
             itemView.movieTitle.text = movie.title
         }
     }
