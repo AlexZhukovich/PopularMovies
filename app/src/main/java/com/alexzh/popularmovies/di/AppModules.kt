@@ -10,11 +10,10 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val appModule = module {
-    viewModel { MoviesViewModel(repository = get()) }
+    viewModel(override = true) { MoviesViewModel(repository = get()) }
 }
 
 val dataModule = module {
-    factory { PopularMoviesServiceFactory().createPopularMoviesService(true, androidContext().getString(R.string.the_movie_db_api_key)) }
-    factory { MovieDbPopularMoviesRepository(service = get()) as PopularMoviesRepository }
+    factory(override = true) { PopularMoviesServiceFactory().createPopularMoviesService(true, androidContext().getString(R.string.the_movie_db_api_key)) }
+    factory(override = true) { MovieDbPopularMoviesRepository(service = get()) as PopularMoviesRepository }
 }
-

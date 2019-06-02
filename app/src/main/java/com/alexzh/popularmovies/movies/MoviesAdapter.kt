@@ -1,6 +1,5 @@
 package com.alexzh.popularmovies.movies
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,8 +34,6 @@ class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
     ) : RecyclerView.ViewHolder(view) {
 
         fun bind(movie: Movie) {
-            Log.d("MovieViewHolder", "Poster url: " + "http://image.tmdb.org/t/p/w185/${movie.backdropPath}")
-
             Glide.with(itemView.context)
                 .load("https://image.tmdb.org/t/p/w185${movie.posterPath}")
                 .into(itemView.movieLogo)
